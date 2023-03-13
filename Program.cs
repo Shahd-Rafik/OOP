@@ -1,138 +1,118 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApp3
+public class Company
 {
-    internal class Program
+    private string name;
+    private string address;
+    private string[] departments;
+    private int numOfEmployees;
+    private decimal revenue;
+    private bool isPublic;
+    private DateTime foundingDate;
+    private string ceo;
+
+    public Company()
     {
-        static void Main(string[] args)
-        { }
-        public class Car
-        {
-            // Class attributes
-            public string Model;
-            public string Manufacturer;
-            public int Year;
-            public double Price;
-            public bool IsElectric;
-            public string[] Features;
-            public double[] Acceleration;
-            public string[] Colors;
-
-            // Constructors
-            public Car()
-            {
-                Model = "Unknown";
-                Manufacturer = "Unknown";
-                Year = 2021;
-                Price = 0;
-                IsElectric = false;
-                Features = new string[] { };
-                Acceleration = new double[] { };
-                Colors = new string[] { };
-            }
-
-            public Car(string model, string manufacturer, int year, double price, bool isElectric)
-            {
-                Model = model;
-                Manufacturer = manufacturer;
-                Year = year;
-                Price = price;
-                IsElectric = isElectric;
-                Features = new string[] { };
-                Acceleration = new double[] { };
-                Colors = new string[] { };
-            }
-
-            public Car(string model, string manufacturer, int year, double price, bool isElectric, string[] features)
-            {
-                Model = model;
-                Manufacturer = manufacturer;
-                Year = year;
-                Price = price;
-                IsElectric = isElectric;
-                Features = features;
-                Acceleration = new double[] { };
-                Colors = new string[] { };
-            }
-
-            public Car(string model, string manufacturer, int year, double price, bool isElectric, string[] features, double[] acceleration)
-            {
-                Model = model;
-                Manufacturer = manufacturer;
-                Year = year;
-                Price = price;
-                IsElectric = isElectric;
-                Features = features;
-                Acceleration = acceleration;
-                Colors = new string[] { };
-            }
-
-            public Car(string model, string manufacturer, int year, double price, bool isElectric, string[] features, double[] acceleration, string[] colors)
-            {
-                Model = model;
-                Manufacturer = manufacturer;
-                Year = year;
-                Price = price;
-                IsElectric = isElectric;
-                Features = features;
-                Acceleration = acceleration;
-                Colors = colors;
-            }
-
-            // Class methods
-            public void DisplayInfo()
-            {
-                Console.WriteLine($"Model: {Model}");
-                Console.WriteLine($"Manufacturer: {Manufacturer}");
-                Console.WriteLine($"Year: {Year}");
-                Console.WriteLine($"Price: {Price:C}");
-                Console.WriteLine($"Is Electric: {IsElectric}");
-                Console.WriteLine($"Features: {string.Join(", ", Features)}");
-                Console.WriteLine($"Acceleration: {string.Join(", ", Acceleration)}");
-                Console.WriteLine($"Colors: {string.Join(", ", Colors)}");
-            }
-
-            public void AddFeature(string feature)
-            {
-                Array.Resize(ref Features, Features.Length + 1);
-                Features[Features.Length - 1] = feature;
-            }
-
-            public void AddAcceleration(double acceleration)
-            {
-                Array.Resize(ref Acceleration, Acceleration.Length + 1);
-                Acceleration[Acceleration.Length - 1] = acceleration;
-            }
-
-            public void AddColor(string color)
-            {
-                Array.Resize(ref Colors, Colors.Length + 1);
-                Colors[Colors.Length - 1] = color;
-            }
-
-            public double GetAverageAcceleration()
-            {
-                double sum = 0;
-                foreach (double acceleration in Acceleration)
-                {
-                    sum += acceleration;
-                }
-                return sum / Acceleration.Length;
-            }
-
-            public bool IsSameModel(Car otherCar)
-            {
-                return Model == otherCar.Model;
-            }
-
-        }
+        name = "Unnamed Company";
+        address = "Unknown";
+        departments = new string[] { "Unknown" };
+        numOfEmployees = 0;
+        revenue = 0;
+        isPublic = false;
+        foundingDate = DateTime.Now;
+        ceo = "Unknown";
     }
-        
 
+    public Company(string name, string address, string[] departments, int numOfEmployees, decimal revenue, bool isPublic, DateTime foundingDate, string ceo)
+    {
+        this.name = name;
+        this.address = address;
+        this.departments = departments;
+        this.numOfEmployees = numOfEmployees;
+        this.revenue = revenue;
+        this.isPublic = isPublic;
+        this.foundingDate = foundingDate;
+        this.ceo = ceo;
+    }
+
+    public Company(string name, string address, string[] departments, int numOfEmployees)
+    {
+        this.name = name;
+        this.address = address;
+        this.departments = departments;
+        this.numOfEmployees = numOfEmployees;
+        this.revenue = 0;
+        this.isPublic = false;
+        this.foundingDate = DateTime.Now;
+        this.ceo = "Unknown";
+    }
+
+    public Company(string name, string address)
+    {
+        this.name = name;
+        this.address = address;
+        this.departments = new string[] { "Unknown" };
+        this.numOfEmployees = 0;
+        this.revenue = 0;
+        this.isPublic = false;
+        this.foundingDate = DateTime.Now;
+        this.ceo = "Unknown";
+    }
+
+    public Company(string name, decimal revenue, bool isPublic)
+    {
+        this.name = name;
+        this.address = "Unknown";
+        this.departments = new string[] { "Unknown" };
+        this.numOfEmployees = 0;
+        this.revenue = revenue;
+        this.isPublic = isPublic;
+        this.foundingDate = DateTime.Now;
+        this.ceo = "Unknown";
+    }
+
+    public void AddEmployee()
+    {
+        numOfEmployees++;
+    }
+
+    public void RemoveEmployee()
+    {
+        numOfEmployees--;
+    }
+
+    public string GetCEO()
+    {
+        return ceo;
+    }
+
+    public void SetCEO(string newCEO)
+    {
+        ceo = newCEO;
+    }
+
+    public string[] GetDepartments()
+    {
+        return departments;
+    }
+
+    public void SetDepartments(string[] newDepartments)
+    {
+        departments = newDepartments;
+    }
+
+    public decimal GetRevenue()
+    {
+        return revenue;
+    }
+
+    public void SetRevenue(decimal newRevenue)
+    {
+        revenue = newRevenue;
+    }
+
+    public DateTime GetFoundingDate()
+    {
+        return foundingDate;
+    }
 }
-
-
